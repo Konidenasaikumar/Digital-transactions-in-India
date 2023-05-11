@@ -87,7 +87,7 @@ fig2= px.choropleth(selected_df,
                     hover_data= [ "Transaction_count", "Amount in Millions"],
                     color_continuous_scale='Viridis')
 
- 
+ fig2.update_layout( height=600, width=800)
 
 
 with col1:
