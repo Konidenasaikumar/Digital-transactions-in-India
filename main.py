@@ -29,7 +29,7 @@ st.write(' ')
 col1, col2 = st.columns((3,1), gap='large') 
 selected_df1 = map_data[(map_data ['Quarter'] == quarter_choice) & (map_data ['Year'] == year_choice)]
 
-with col1:
+
             fig1=(px.choropleth(selected_df1, 
                         locations= 'States', 
                         geojson= "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson", 
@@ -75,9 +75,8 @@ col1, col2 = st.columns((3,1), gap='large')
 selected_df = aggr_states_trans[(aggr_states_trans['Quarter'] == quarter_choice) & (aggr_states_trans['Year'] == year_choice)&
                                 (aggr_states_trans['Payment_type'] == payment_choice)]
 # Creating the map
-
-
-fig2= px.choropleth(selected_df, 
+with col1:
+    fig2= px.choropleth(selected_df, 
                     locations= 'States', 
                     geojson= 'https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson', 
                     featureidkey= 'properties.ST_NM',
@@ -87,12 +86,9 @@ fig2= px.choropleth(selected_df,
                     hover_data= [ "Transaction_count", "Amount in Millions"],
                     color_continuous_scale='Viridis')
 
-fig2.update_layout( height=600, width=800)
-fig2.update_layout(mapbox_style="open-street-map")
-fig2.update_geos(fitbounds= "locations", visible= False)
-
-
-with col1:
+    fig2.update_layout( height=600, width=800)
+    fig2.update_layout(mapbox_style="open-street-map")
+    fig2.update_geos(fitbounds= "locations", visible= False)
     st.plotly_chart(fig2, use_container_width=True)
 
 with col2:
