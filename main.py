@@ -82,7 +82,7 @@ with col1:
                     hover_data= [ "Transaction_count", "Amount in Millions"],
                     color_continuous_scale='Viridis')
     fig2.update_geos(fitbounds= "locations", visible= False)
-    fig2.update_layout( height=600, width=800)
+    fig2.update_layout( height=600, width=1000)
     st.plotly_chart(fig2, use_container_width=True)
 
 with col2:
