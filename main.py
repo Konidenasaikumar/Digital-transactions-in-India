@@ -15,7 +15,7 @@ st.write('  ') #To create space between title and slect box
 
     ### Map transactions statewise
 st.header('Statewise transactions in Millions')
-map_data =pd.read_csv(r'csv_files/map_data_1.csv')
+map_data =pd.read_csv(r'csv_files/map_data.csv')
 col1, col2 = st.columns(2)
 years = map_data['Year'].unique()#extracting years from dataframe
 Quarters = map_data['Quarter'].unique()#extracting quarters from dataframe
