@@ -88,15 +88,12 @@ fig2= px.choropleth(selected_df,
                     color_continuous_scale='Viridis')
 
 fig2.update_layout( height=600, width=800)
+fig2.update_layout(mapbox_style="open-street-map")
+fig2.update_geos(fitbounds= "locations", visible= False)
 
 
 with col1:
-    fig2.update_layout( height=600, width=800)
-    fig1.update_layout(mapbox_style="open-street-map")
-    fig2.update_geos(fitbounds= "locations", visible= False)
-    
     st.plotly_chart(fig2, use_container_width=True)
- 
 
 with col2:
     st.subheader('Observations')
