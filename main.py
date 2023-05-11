@@ -40,7 +40,7 @@ fig1.update_geos(fitbounds= "locations", visible= False)
 #fig1.update_layout( height=600, width=800)
         
 with col1:
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1)
 
 with col2:
     st.subheader('Observations')
