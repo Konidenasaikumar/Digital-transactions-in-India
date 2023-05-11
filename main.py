@@ -30,12 +30,12 @@ col1, col2 = st.columns((3,1), gap='large')
 selected_df1 = map_data[(map_data ['Quarter'] == quarter_choice) & (map_data ['Year'] == year_choice)]
 
 with col1:
-            fig1=(px.choropleth(selected_df1, 
-                        locations= 'States', 
-                        geojson= "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson", 
-                        featureidkey= 'properties.ST_NM',
-                        color= 'Amount in Millions',
-                        color_continuous_scale='viridis'))
+    fig1=(px.choropleth(selected_df1, 
+            locations= 'States', 
+            geojson= "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson", 
+            featureidkey= 'properties.ST_NM',
+            color= 'Amount in Millions',
+            color_continuous_scale='viridis'))
 fig1.update_geos(fitbounds= "locations", visible= False)
 fig1.update_layout( height=600, width=800)
  
