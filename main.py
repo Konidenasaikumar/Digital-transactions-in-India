@@ -15,7 +15,7 @@ st.write('  ') #To create space between title and slect box
 
     ### Map transactions statewise
 st.header('Statewise transactions in Millions')
-map_data =pd.read_csv('/Volumes/Sk_drive_space/Python_practise/Project-2/csv_files/map_data_1.csv')
+map_data =pd.read_csv('csv_files/map_data.csv')
 col1, col2 = st.columns(2)
 years = map_data['Year'].unique()#extracting years from dataframe
 Quarters = map_data['Quarter'].unique()#extracting quarters from dataframe
@@ -55,7 +55,7 @@ with col2:
 
 ###Aggregated transactions statewise
 st.header('Statewise transactions based on payment type')
-aggr_states_trans =pd.read_csv('/Volumes/Sk_drive_space/Python_practise/Project-2/csv_files/transactions_states.csv')
+aggr_states_trans =pd.read_csv('/csv_files/transactions_states.csv')
 duplicates = aggr_states_trans.duplicated(keep=False)
 col1, col2, col3 = st.columns(3)
 years = aggr_states_trans['Year'].unique()#extracting years from dataframe
@@ -79,7 +79,7 @@ selected_df = aggr_states_trans[(aggr_states_trans['Quarter'] == quarter_choice)
 
 fig2=px.choropleth(selected_df,
                     locations= 'state_code', 
-                    geojson= '/Volumes/Sk_drive_space/Python_practise/Project-2/Agg_users/states_india.geojson', 
+                    geojson= 'https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson', 
                     featureidkey= 'properties.state_code',
                     color= 'Amount in Millions',
                     #selected_df['Transaction_amount'] = pd.to_numeric(selected_df['Transaction_amount'])
@@ -108,7 +108,7 @@ with col2:
 
 
 st.header('Top 10 transactions for States')
-top_states=pd.read_csv('/Volumes/Sk_drive_space/Python_practise/Project-2/csv_files/top_states.csv')
+top_states=pd.read_csv('csv_files/top_states.csv')
 col1, col2 = st.columns(2)
 years = top_states['Year'].unique()#extracting years from dataframe
 
@@ -155,7 +155,7 @@ with col3:
 #Top Districts
 st.header('Top 10 transactions for Districts')
 #Top districts 
-top_districts=pd.read_csv('/Volumes/Sk_drive_space/Python_practise/Project-2/csv_files/top_districts.csv')
+top_districts=pd.read_csv('csv_files/top_districts.csv')
 col1, col2 = st.columns(2)
 years = top_districts['Year'].unique()#extracting years from dataframe
 
@@ -203,7 +203,7 @@ with col3:
 #Top Pincodes
 st.header('Top 10 transactions for Pincodes')
 #Top Pincodes
-top_pincodes=pd.read_csv('/Volumes/Sk_drive_space/Python_practise/Project-2/csv_files/top_pincodes.csv')
+top_pincodes=pd.read_csv('csv_files/top_pincodes.csv')
 col1, col2 = st.columns(2)
 years = top_pincodes['Year'].unique()#extracting years from dataframe
 
@@ -253,7 +253,7 @@ with col3:
 
     ###Aggregated transactions 
 st.header('Aggregated transactions based on payment type')
-aggr_trans =pd.read_csv('/Volumes/Sk_drive_space/Python_practise/Project-2/csv_files/Transaction_count.csv')
+aggr_trans =pd.read_csv('csv_files/Transaction_count.csv')
 col1, col2 = st.columns(2)
 years = aggr_trans['Year'].unique()#extracting years from dataframe
 Quarters = aggr_trans['Quarter'].unique()#extracting quarters from dataframe
