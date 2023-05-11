@@ -15,7 +15,7 @@ st.write('  ') #To create space between title and slect box
 
     ### Map transactions statewise
 st.header('Statewise transactions in Millions')
-map_data =pd.read_csv(r'csv_files/map_data.csv')
+map_data =pd.read_csv(r'csv_files/map_data_1.csv')
 col1, col2 = st.columns(2)
 years = map_data['Year'].unique()#extracting years from dataframe
 Quarters = map_data['Quarter'].unique()#extracting quarters from dataframe
@@ -30,22 +30,14 @@ col1, col2 = st.columns((3,1), gap='large')
 selected_df1 = map_data[(map_data ['Quarter'] == quarter_choice) & (map_data ['Year'] == year_choice)]
 
 with col1:
-    fig1= px.choropleth(selected_df1, 
-                        locations= 'state_code', 
-                        geojson= 'states_india.geojson', 
-                        featureidkey= 'properties.state_code',
+            fig1=(px.choropleth(selected_df1, 
+                        locations= 'States', 
+                        geojson= "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson", 
+                        featureidkey= 'properties.ST_NM',
                         color= 'Amount in Millions',
-                        #selected_df['Transaction_amount'] = pd.to_numeric(selected_df['Transaction_amount'])
-                        scope = 'asia',
-                        hover_name= 'States',
-                        hover_data= [ 'Registered_users','Transaction_count','Amount in Millions'],
-                        color_continuous_scale='Viridis')
-    fig1.update_geos(fitbounds= "locations", visible= False)
-    #fig1.show()
-    fig1.update_layout( height=600, width=800)
-    fig1.update_layout(mapbox_style="open-street-map")
-
-    st.plotly_chart(fig1, use_container_width=True)
+                        color_continuous_scale='viridis'))
+fig1.update_geos(fitbounds= "locations", visible= False)
+fig1.update_layout( height=600, width=800)
  
 with col2:
     st.subheader('Observations')
