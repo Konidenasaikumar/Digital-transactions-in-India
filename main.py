@@ -39,7 +39,7 @@ fig1=(px.choropleth(selected_df1,
 fig1.update_geos(fitbounds= "locations", visible= False)
         
 with col1:
-    st.plotly_chart(fig1)
+    st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
     st.subheader('Observations')
@@ -81,7 +81,7 @@ with col1:
                     hover_data= [ "Transaction_count", "Amount in Millions"],
                     color_continuous_scale='Viridis')
     fig2.update_geos(fitbounds= "locations", visible= False)
-    st.plotly_chart(fig2)
+    st.plotly_chart(fig2, use_container_width=True)
 
 with col2:
     st.subheader('Observations')
