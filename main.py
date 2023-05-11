@@ -55,7 +55,7 @@ with col2:
 
 ###Aggregated transactions statewise
 st.header('Statewise transactions based on payment type')
-aggr_states_trans =pd.read_csv('/csv_files/transactions_states.csv')
+aggr_states_trans =pd.read_csv('csv_files/transactions_states.csv')
 duplicates = aggr_states_trans.duplicated(keep=False)
 col1, col2, col3 = st.columns(3)
 years = aggr_states_trans['Year'].unique()#extracting years from dataframe
@@ -82,13 +82,12 @@ fig2=px.choropleth(selected_df,
                     geojson= 'https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson', 
                     featureidkey= 'properties.state_code',
                     color= 'Amount in Millions',
-                    #selected_df['Transaction_amount'] = pd.to_numeric(selected_df['Transaction_amount'])
                     scope = 'asia', 
                     hover_name= 'States',
                     hover_data= [ "Transaction_count", "Amount in Millions"],  
                     color_continuous_scale='Viridis')
 
-#fig.show()  
+ 
 
 
 with col1:
