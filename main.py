@@ -26,7 +26,7 @@ with col2:
     quarter_choice = st.selectbox('Quarter', Quarters, key=11)
 st.write(' ')
 st.write(' ')
-col1, col2 = st.columns((3,1), gap='large') 
+col1 = st.columns(1) 
 selected_df1 = map_data[(map_data ['Quarter'] == quarter_choice) & (map_data ['Year'] == year_choice)]
 
 
@@ -41,11 +41,6 @@ fig1.update_layout( height=600, width=600)
         
 with col1:
     st.plotly_chart(fig1, use_container_width=True)
-
-with col2:
-    st.subheader('Observations')
-    st.write('* ')
-    st.write('* ')
 
 ################################################################
 
@@ -67,7 +62,7 @@ with col3:
     payment_choice = st.selectbox('Payment Type', Payment_type, key=109)
 st.write(' ')
 st.write(' ')
-col1, col2 = st.columns((3,1), gap='large')  
+col1 = st.columns(1)  
 selected_df = aggr_states_trans[(aggr_states_trans['Quarter'] == quarter_choice) & (aggr_states_trans['Year'] == year_choice)&
                                 (aggr_states_trans['Payment_type'] == payment_choice)]
 # Creating the map
@@ -85,10 +80,6 @@ with col1:
     fig2.update_layout( height=600, width=1400)
     st.plotly_chart(fig2, use_container_width=True)
 
-with col2:
-    st.subheader('Observations')
-    st.write('* ')
-    st.write('* ')
 ################################################################
 ###Top states
 
