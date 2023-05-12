@@ -34,7 +34,7 @@ fig1=(px.choropleth(selected_df1,
             color= 'Amount in Millions',
             color_continuous_scale='viridis'))
 fig1.update_geos(fitbounds= "locations", visible= False)
-fig1.update_layout( height=600, width=600)
+#fig1.update_layout( height=600, width=600)
         
 with st.container():
     st.plotly_chart(fig1, use_container_width=True)
