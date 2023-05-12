@@ -26,10 +26,7 @@ with col2:
     quarter_choice = st.selectbox('Quarter', Quarters, key=11)
 st.write(' ')
 st.write(' ')
-col1 = st.columns(1) 
 selected_df1 = map_data[(map_data ['Quarter'] == quarter_choice) & (map_data ['Year'] == year_choice)]
-
-
 fig1=(px.choropleth(selected_df1, 
             locations= 'States', 
             geojson= "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson", 
@@ -39,7 +36,7 @@ fig1=(px.choropleth(selected_df1,
 fig1.update_geos(fitbounds= "locations", visible= False)
 fig1.update_layout( height=600, width=600)
         
-with col1:
+with st.container():
     st.plotly_chart(fig1, use_container_width=True)
 
 ################################################################
@@ -62,11 +59,10 @@ with col3:
     payment_choice = st.selectbox('Payment Type', Payment_type, key=109)
 st.write(' ')
 st.write(' ')
-col1 = st.columns(1)  
 selected_df = aggr_states_trans[(aggr_states_trans['Quarter'] == quarter_choice) & (aggr_states_trans['Year'] == year_choice)&
                                 (aggr_states_trans['Payment_type'] == payment_choice)]
 # Creating the map
-with col1:
+with st.container():
     fig2= px.choropleth(selected_df, 
                     locations= 'States', 
                     geojson= 'https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson', 
